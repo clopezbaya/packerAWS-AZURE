@@ -1,0 +1,17 @@
+[Unit]
+Description=Node-Nginx
+After=cloud-final.service
+
+[Service]
+WorkingDirectory=/home/ec2-user/NodeAPP
+ExecStart=/usr/bin/node /home/ec2-user/NodeAPP/index.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=node-nginx-app
+User=ec2-user
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=cloud-init.target
